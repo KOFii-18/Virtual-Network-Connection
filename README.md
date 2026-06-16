@@ -65,6 +65,43 @@ To demonstrate understanding, I documented:
     • NSG configuration and security best practices.
     • RDP and SSH connection steps.
     • Azure Bastion deployment and usage.
+## Architecture Diagram
+
+                +-------------------+
+                |   Client Laptop   |
+                |-------------------|
+                | RDP (Port 3389)   |
+                | SSH (Port 22)     |
+                +---------+---------+
+                          |
+                          v
+                +-------------------+
+                |  Network Security |
+                |      Group (NSG)  |
+                |-------------------|
+                | Allow My IP only  |
+                | Deny all others   |
+                +---------+---------+
+                          |
+          ---------------------------------
+          |                               |
+          v                               v
++-------------------+           +-------------------+
+| Windows VM        |           | Linux VM          |
+|-------------------|           |-------------------|
+| Public IP / DNS   |           | Public IP / DNS   |
+| RDP Access        |           | SSH Access        |
++-------------------+           +-------------------+
+
+                          |
+                          v
+                +-------------------+
+                |   Azure Bastion   |
+                |-------------------|
+                | Browser-based RDP |
+                | Browser-based SSH |
+                +-------------------+
+
 
 Conclusion
 This project demonstrates knowledge of secure remote connectivity to Azure VMs, proper NSG configuration, and Bastion deployment. While live screenshots could not be provided due to subscription expiration, the documentation reflects the correct procedure and best practices required by the rubric.
